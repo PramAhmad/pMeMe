@@ -23,7 +23,7 @@ const  tambahMeme = async (evt) => {
     const filePath = `${fileName}`
     console.log(filePath)
 
-    let { error: uploadError } = await supabase.storage.from('foto').upload(filePath, file)
+    let { error: uploadError } = await supabase.storage.from('avatar').upload(filePath, file)
 
     if (uploadError) throw uploadError
 

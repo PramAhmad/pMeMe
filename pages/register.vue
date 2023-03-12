@@ -1,15 +1,21 @@
 <template>
-    <div>
-        <div class="md:w-1/3 m-auto block my-2 mt-24 shadow-md border border-gray-200 p-4 rounded-md">
-            <div class="">
-                <h3 class="text-center font-bold text-gray-800 text-2xl">Masuk Pmeme</h3>
+    <div class="p-3 flex items-center justify-center w-full h-screen align-middle ">
+        <div class=" items-center align-middle w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <div class="py-4 mb-2">
+               <h5 class="text-xl font-medium text-gray-900 dark:text-white">SignUp to Pmeme</h5>
             </div>
-            <form  method="post" @submit.prevent="signup">
+            <form  method="post" @submit.prevent="signup" class="space-y-4">
+                <input type="username" v-model="username" placeholder="username"
+                class="bg-gray-50 px-3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                required
+                >
                 <input type="email" v-model="email" placeholder="email"
-                class="py-2 px-3 bg-gray-100 border border-gray-300 rounded-md mt-3 w-full"
+                class="bg-gray-50 px-3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                required
                 >
                 <input type="password" v-model="password" placeholder="password"
-                class="py-2 px-3 bg-gray-100 border border-gray-300 rounded-md my-3 w-full"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 px-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                required
                 >
                   <button @click="login" class="py-1.5 w-full bg-sky-500 text-white font-semibold text-center text-md hover:bg-sky-600 hover:transition duration-500 rounded-md my-2">Register</button>
             </form>
@@ -21,12 +27,17 @@
 </template>
 
 <script setup>
-import console from 'console';
+definePageMeta({
+    middleware: 'noauth'
+})
+
 
 const supabase = useSupabaseAuthClient()
 const supa = useSupabaseUser()
 const email = ref()
 const password = ref()
+const avatar = ref("https://wqogrgtqvjxkwlrdjpya.supabase.co/storage/v1/object/public/avatar/705891.png")
+const username = ref()
 
 async function SigninGithub(){
     const {error} = await supabase.auth.signInWithOAuth(
@@ -38,18 +49,27 @@ async function SigninGithub(){
     }
 }
 async function signup(){
-    const {user} = await supabase.auth.signUp({
+    const {data,error} = await supabase.auth.signUp({
         email : email.value,
         password: password.value,
+        options:{
+            data:{
+                user_name:username.value,
+                avatar_url:avatar.value
+            }
+        }
+
     })
-    const {error,data} = await supabase.from("profile").insert({
-        // user_id : supa.id,
-        email : email.value
-    })
-  
     if(error){
-        console.log(error)
+        alert("pstikan data benar")
+        navigateTo("/register")
     }
+        else{
+            alert("silahkan cek email")
+            navigateTo("/login")
+    }
+  
+    
     // console.log(supa.id)
     // console.log(email.value)
     // console.log(user)
