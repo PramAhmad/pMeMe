@@ -1,6 +1,6 @@
 <template>
     <div class="p-3 flex items-center justify-center w-full h-screen align-middle ">
-        <div class="items-center align-middle w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div class="items-center align-middle w-full max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <h5 class="text-center font-bold text-gray-900 text-2xl my-2 mb-3">Post Meme</h5>
             <form  method="post" @submit.prevent="tambahMeme">
             <Foto v-model:path="fotopath" />

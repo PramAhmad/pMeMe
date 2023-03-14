@@ -12,8 +12,8 @@
 <!-- Main modal -->
 
 <div class="md:w-1/2 m-auto mt-10 h-full pb-10 pt-10 px-5 bg-gray-50 rounded-md shadow-md" >
-    <div class="w-full rounded-full m-auto " v-for="d in datas" :key="d.id">
-        <img :src="d.user_metadata.avatar_url" alt="" srcset="" class="w-1/3 m-auto rounded-full">
+    <div class="w-full h-full rounded-full m-auto " v-for="d in datas" :key="d.id">
+        <img :src="d.user_metadata.avatar_url" alt="" srcset="" class="w-44 h-44 rounded-full m-auto">
         <h4 class="mt-5 text-gray-700 font-bold  text-center text-2xl uppercase">{{ d.user_metadata.user_name }}</h4>
         
     </div>

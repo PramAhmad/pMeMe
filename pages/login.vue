@@ -1,6 +1,6 @@
 <template>
-    <div class="p-3">
-        <div class="m-auto mt-16 w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <div class="p-3 flex justify-center items-center w-full h-screen">
+        <div class=" w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <div class="py-4 mb-2">
                <h5 class="text-xl font-medium text-gray-900 dark:text-white">Sign in to Pmeme</h5>
             </div>
@@ -22,7 +22,10 @@
             
             <hr class="mt-1">
             <h4 class="text-center text-md text-gray-400 font-semibold mt-2 mb-2">or</h4>
-            <button @click="SigninGithub()" class="py-1.5 w-full bg-gray-800 text-white font-semibold text-center text-md rounded-md hover:bg-gray-700">SignIn With Github</button>
+          <div class="flex items-center justify-center gap-6">
+                <button @click="SigninGithub()" class="   text-white font-semibold text-center text-md rounded-md hover:bg-gray-700"><font-awesome-icon icon="fa-brands fa-square-github" class="w-10 h-10 text-5xl text-gray-800 bg-white" /></button>
+                <button @click="SigninGoole()" class="  text-white font-semibold text-center text-md rounded-md hover:bg-gray-700"><font-awesome-icon icon="fa-brands fa-square-google-plus" class="w-10 h-10 text-5xl text-red-600 bg-white" /></button>
+            </div>
         </div>
     </div>
 </template>
@@ -43,6 +46,11 @@ async function SigninGithub(){
     if (error){
         console.log(error)
     }
+}
+async function SigninGoole(){
+    const {error} = await supabase.auth.signInWithOAuth({
+        provider:'google'
+    })
 }
 async function login(){
     const {user,error} = await supabase.auth.signInWithPassword({
