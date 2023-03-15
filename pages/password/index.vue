@@ -13,7 +13,9 @@ const email = ref()
 const user =useSupabaseAuthClient()
 console.log(name)
 async function ChangePassword(){
-    const {data,error} = await user.auth.resetPasswordForEmail({email:email.value})
+    const {data,error} = await user.auth.resetPasswordForEmail(email.value,{
+        redirectTo:"http://localhost:3000/password/update"
+    })
     if(error){
         console.log(error)
     }

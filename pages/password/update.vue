@@ -1,6 +1,11 @@
 <template>
     <div>
-        <h3>update password</h3>
+      
+        <form  method="post" @submit.prevent="updatePassword">
+            <input type="text" v-model="password
+            ">
+            <button type="submit">ubah</button>
+        </form>
     </div>
 </template>
 
@@ -14,6 +19,9 @@ async function updatePassword(){
     })
     if(error){
         console.log(error)
+    }
+    if(data){
+        console.log("suskes")
     }
 }
 </script>
