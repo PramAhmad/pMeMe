@@ -60,11 +60,12 @@ async function SigninGoogle(){
     }
 }
 async function signup(){
-    const {data,error} = await supabase.auth.signUp({
+    const {data,error} = await supabase.auth.signUp({   
         email : email.value,
         password: password.value,
         options:{
             data:{
+                full_name:username.value,
                 user_name:username.value,
                 avatar_url:avatar.value
             }
@@ -72,7 +73,7 @@ async function signup(){
 
     })
     if(error){
-        alert("pstikan data benar")
+      console.log(error)
         navigateTo("/register")
     }
         else{

@@ -41,7 +41,7 @@
                     <img :src="m.foto" alt="Apple Watch">
                 </td>
                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                    {{ m.nama_user }}
+                    {{ m.id_user.full_name }}
                 </td>
                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                    {{ m.deskripsi }}
@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import { list } from 'postcss';
+
 
 
 definePageMeta({
@@ -74,7 +74,7 @@ const supabase = useSupabaseAuthClient()
 const lists = ref()
 const route = useRoute()
 async function getRaw(){
-    const {data,error} = await supabase.from("rawmeme").select().eq('status',false)
+    const {data,error} = await supabase.from("rawmeme").select("id,created_at,deskripsi,foto,id_user(id,full_name,avatar_url)").eq('status',false)
     lists.value = data
 }
 onMounted(()=>{

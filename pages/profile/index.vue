@@ -14,7 +14,7 @@
 <div class="md:w-1/2 m-auto mt-10 h-full pb-10 pt-10 px-5 bg-gray-50 rounded-md shadow-md" >
     <div class="w-full h-full rounded-full m-auto " v-for="d in datas" :key="d.id">
         <img :src="d.user_metadata.avatar_url" alt="" srcset="" class="w-44 h-44 rounded-full m-auto">
-        <h4 class="mt-5 text-gray-700 font-bold  text-center text-2xl uppercase">{{ d.user_metadata.user_name }}</h4>
+        <h4 class="mt-5 text-gray-700 font-bold  text-center text-2xl uppercase">{{ d.user_metadata.full_name }}</h4>
         
     </div>
 <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="m-auto block text-white bg-sky-600 hover:bg-sky-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
@@ -60,8 +60,8 @@
 </template>
 
 <script setup>
-// const user = useSupabaseUser()
 import { initModals } from 'flowbite'
+const user = useSupabaseUser()
 const supabase = useSupabaseAuthClient()
 const token = useSupabaseToken()
 console.log(token)
@@ -82,13 +82,25 @@ async function getName(){
 }
 async function updateName(){
     console.log(name.value)
-    const {data,error} = await supabase.auth.updateUser({
+    const {error:tbl2} = await supabase.auth.updateUser({
         data:{
+            full_name : name.value,
             user_name : name.value,
             avatar_url: url.value + avapath.value
             
         }
     })
+    const {data ,error:tbl1} = await supabase
+    .from("profiles")
+    .update({
+        avatar_url:url.value + avapath.value,
+        id:user.value.id,
+        full_name : name.value
+    })
+    .eq('id',user.value.id)
+    if(tbl1 || tbl2){
+        console.error(tbl1 || tbl2)
+    }
 }
 
 onMounted(()=>{

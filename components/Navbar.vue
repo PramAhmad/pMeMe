@@ -26,7 +26,7 @@
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
               <div class="px-4 py-3" role="none">
                 <p class="text-sm font-semibold text-gray-900 dark:text-white" role="none">
-                  {{ user.user_metadata.user_name }}
+                  {{ user.user_metadata.full_name }}
                 </p>
                 <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
                   {{ user.email }}
@@ -34,7 +34,7 @@
               </div>
               <ul class="py-1" role="none">
                 <li>
-                  <NuxtLink to="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Profile</NuxtLink>
+                  <NuxtLink to="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Update Profile</NuxtLink>
                 </li>
                 <li>
                   <NuxtLink to="/password" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Change Password</NuxtLink>
@@ -88,6 +88,7 @@
                <span class="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
             </NuxtLink>
          </li>
+     
          <li v-if="user">
             <NuxtLink to="/post" class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"></path><path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path></svg>
@@ -96,20 +97,19 @@
             </Nuxtlink>
          </li>
          <li v-if="user">
-            <NuxtLink to="/profile" class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <NuxtLink :to="`/profile/`+user.user_metadata.full_name" class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
                <span class="flex-1 ml-3 whitespace-nowrap">Profile</span>
             </NuxtLink>
          </li>
          <li v-if="user">
-            <NuxtLink to="/meme/tambah" class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <NuxtLink to="/post/tambah" class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"></path></svg>
                <span class="flex-1 ml-3 whitespace-nowrap">Post Meme</span>
             </NuxtLink>
          </li>
          <li v-if="user">
-            <button  @click="logout" class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-              
+            <button  @click="logout" class="flex items-center p-2 text-base font-semibold text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">         
                <span class="flex-1 ml-3 whitespace-nowrap">Logout</span>
             </button>
          </li>
@@ -140,11 +140,15 @@ async function logout(){
 }
 async function getSelectedPost(){
     const {data,error} = await supabase.from("rawmeme")
-    .select('nama_user',{count:'exact'})
-    .eq("nama_user",user.value.user_metadata.user_name)
+    .select('id_user(id)',{count:'exact'})
+    .eq("id_user(id)",user.value.id)
     console.log(data)
     datas.value = data
 }
+// const getuser = async ()=>{
+//    const {data,error} = await supabase
+//    .from('profiles')
+// }
 onMounted(()=>{
     getSelectedPost()
     initDrawers()

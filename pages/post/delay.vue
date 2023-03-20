@@ -1,5 +1,6 @@
 <template>
     <div>
+       <div>
            <div>
           <div class="flex items-center justify-center w-full bg-gray-100 bg-opacity-75 m-auto h-screen" v-if="loading">
                 
@@ -19,10 +20,10 @@
             <Navbar/>
         </div>
         <div class="md:col-span-6 w-full h-full md:px-10 px-4 pt-16 pb-10  m-auto " >
-            <div class=" bg-sky-500 hover:g-sky-600 text-center font-semibold text-white mt-7 w-44 h-5 rounded-md flex items-center justify-center"><NuxtLink to="/post/delay">butuh persetujuan: {{ unapp.length }}</NuxtLink></div>
-        
+ 
           
-            <div class="w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 items-center " v-for="d in datas" :key="d.id">
+          
+            <div class="w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 items-center " v-for="d in meme" :key="d.id">
                 <div class="w-full h-full bg-gray-50 flex  border-b border-gray-300" v-if="user">
                     <div class="rounded-full ml-6 my-3">
                         <img :src="d.id_user.avatar_url" alt="img avatar" class="w-10 h-10 p-0.5 rounded-full ring-2 ring-gray-300 dark:ring-gray-500">
@@ -46,64 +47,29 @@
   </div>
 
     </div>
+    </div>
 </template>
 
 <script setup>
-const supabase = useSupabaseAuthClient()
 const user = useSupabaseUser()
-const datas = ref([])
+const supa = useSupabaseAuthClient()
+const meme = ref([])
 const loading = ref(true)
-const route = useRoute();
-const unapp = ref([])
-console.log(user)
-route.params.id;
 
-// async function getName(){
-//     const {data,error} = await supabase.auth.getUser()
-
-//     console.log(data)
-//     datas.value = data
-
-// }
-async function getSelectedPost(){
+const getUnMeme = async ()=>{
     loading.value = true
-    const {data,error} = await supabase.from("rawmeme")
-    .select("created_at,deskripsi,foto,status,id_user(id,full_name,avatar_url)")
-    .eq("id_user(id)",user.value.id)
-    .eq("status",true)
-    .order("created_at",{ascending:true})
-    datas.value = data
-    if(error){
-        console.log(error)
-    }
-    
-    loading.value = false
-    console.log(data)
-}
-async function UnapprovedPost(){
-    loading.value = true
-    const {data,error} = await supabase.from("rawmeme")
+    const {data,error} = await supa
+    .from('rawmeme')
     .select("created_at,deskripsi,foto,status,id_user(id,full_name,avatar_url)")
     .eq("id_user(id)",user.value.id)
     .eq("status",false)
-    unapp.value = data
-    loading.value=false
-    console.log(unapp)
-}
-async function deletepost(d){
-      const { error, status } = await supabase.from("rawmeme").delete().eq("id", d.id);
-  // console.log(status);
-  if (status === 204) {
-    alert("data berhasil di hapus");
-    getSelectedPost();
-  }
-  if(error){
-    console.log(error)
-  }
+    meme.value = data
+    loading.value = false
+    if(error){
+        console.log(error)
+    }
 }
 onMounted(()=>{
-    getSelectedPost()
-    UnapprovedPost()
+    getUnMeme()
 })
 </script>
-

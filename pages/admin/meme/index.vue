@@ -43,7 +43,7 @@
                     <img :src="m.foto" alt="Apple Watch">
                 </td>
                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                    {{ m.nama_user }}
+                    {{ m.id_user.full_name }}
                 </td>
                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                    {{ m.deskripsi }}
@@ -77,7 +77,7 @@ const getmeme = async ()=>  {
     loading.value = true
     const {data,error} = await supabase
     .from('rawmeme')
-    .select()
+    .select("id,created_at,deskripsi,foto,id_user(id,full_name,avatar_url)")
     .eq("status",true)
     datas.value = data
     loading.value = false

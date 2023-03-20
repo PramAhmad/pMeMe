@@ -31,8 +31,7 @@ async function tambahMeme(){
 
         deskripsi:deskripsi.value,
         foto:url.value + fotopath.value,
-        nama_user:user.value.user_metadata.user_name,
-        avatar_url:user.value.user_metadata.avatar_url,
+        id_user:user.value.id,
         status:status.value
     })
     deskripsi.value = ""
