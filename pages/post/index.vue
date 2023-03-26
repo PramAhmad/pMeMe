@@ -21,7 +21,9 @@
         <div class="md:col-span-6 w-full h-full md:px-10 px-4 pt-16 pb-10  m-auto " >
             <div class=" bg-sky-500 hover:g-sky-600 text-center font-semibold text-white mt-7 w-44 h-5 rounded-md flex items-center justify-center"><NuxtLink to="/post/delay">butuh persetujuan: {{ unapp.length }}</NuxtLink></div>
         
-          
+          <div class="" v-if="datas.length <= 0"> 
+            <p>data tidak ada</p>
+          </div>
             <div class="w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 items-center " v-for="d in datas" :key="d.id">
                 <div class="w-full h-full bg-gray-50 flex  border-b border-gray-300" v-if="user">
                     <div class="rounded-full ml-6 my-3">

@@ -22,7 +22,7 @@
         <div class="md:col-span-6 w-full h-full md:px-10 px-4 pt-16 pb-10  m-auto " >
  
           
-          
+          <p v-if="meme.length <= 0  ">data tidak ada</p>
             <div class="w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 items-center " v-for="d in meme" :key="d.id">
                 <div class="w-full h-full bg-gray-50 flex  border-b border-gray-300" v-if="user">
                     <div class="rounded-full ml-6 my-3">

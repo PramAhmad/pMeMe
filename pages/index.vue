@@ -14,20 +14,20 @@
         </div>
     <div class="md:grid md:grid-cols-10 w-full h-full">
       
-        <div class="col-span-2 w-full h-full ">
+        <div class="md:col-span-2 w-full h-full ">
             <Navbar/>
         </div>
-        <div class="md:col-span-5 w-full h-full md:px-10 px-4 pt-16 pb-10  m-auto " >
+        <div class="md:col-span-6 w-full h-full  px-4 pt-16  pb-10 place-items-center  " >
           
           
-            <div class="w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 items-center " v-for="d in datas" :key="d.id">
+            <div class="md:w-[80%] w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 place-self-center m-auto  " v-for="d in datas" :key="d.id">
 
              
                 <div class="w-full h-full bg-gray-50 flex border-b border-gray-300" >
                     <div class="rounded-full ml-6 my-3">
                         <img :src="d.id_user.avatar_url" alt="img avatar" class="w-10 h-10 p-0.5 rounded-full ring-2 ring-gray-300 dark:ring-gray-500">
                     </div>
-                    <h3 class="py-5 font-semibold  text-md text-gray-800 px-3">{{ d.id_user.full_name }}</h3>
+                    <NuxtLink :to="`/profile/`+d.id_user.full_name" class="py-5 font-semibold  text-md text-gray-800 px-3">{{ d.id_user.full_name }}</NuxtLink>
                 </div>
                 <img :src="d.foto" alt="" class="w-full h-full  pb-3">
                 
@@ -39,18 +39,28 @@
                       <p>{{ likes.length }}</p>
                     </div>
                   </section> -->
-                  <p>{{ d.like_count }}</p>
-                     <button @click="addLike(d.id)" class="py-2 px-3 mr-3 bg-gray-800 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-white font-bold">
+                  
+                     <!-- <button @click="addLike(d)" class="py-2 px-3 mr-3 bg-gray-800 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-white font-bold">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
                          </svg>
-                     </button>
-                
-                  <button @click="getKomentar(d)"  class="py-2 px-3 bg-gray-800 rounded-md"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-white font-bold">
+                     </button> -->
+               
+                 <button @click="getKomentar(d)"  class="py-2 mr-3 px-3 bg-gray-800 rounded-md inline-block align-middle"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-white font-bold">
                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                      </svg>
+                </button>
+      
+                 <a :href="`https://www.facebook.com/share.php?&src=bm&v=4&u=`+d.foto" class="py-2 px-3 bg-gray-800 rounded-md inline-block align-middle"  >
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-white">
+  <path fill-rule="evenodd" d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z" clip-rule="evenodd" />
+</svg>
 
-                  </button>
-            
+                </a>
+                
+          
+              
+
+
                    
                   
                   <section v-for="c in coment" :key="c.id" class="w-full bg-gray-100">
@@ -58,26 +68,42 @@
            
 <div class="bg-white dark:bg-gray-800 text-black dark:text-gray-200 p-2 antialiased flex "  v-if="d.id == c.id_post" >
       <p v-if="coment.length < 1 ">Tidak ada komentar</p>
-  <div>
-    <div class="bg-gray-100 dark:bg-gray-700 rounded-lg px-2 pt-1 pb-1 " >
-      <img :src="c.id_user_avatar_url" alt="">
-    <NuxtLink :to="`/profile/`+c.id_user.full_name" class="font-semibold text-sm leading-relaxed text-slate-600">{{ c.id_user.full_name }}</NuxtLink> 
-      <div class="text-normal leading-snug md:leading-normal"
-      >{{ c.komentar }}</div>
-    </div>
-   
+
+    <div class="flex items-center space-x-6 ">
+        <div class="group relative flex flex-shrink-0 self-start cursor-pointer">
+          <img 
+            x-on:mouseover="open1 = true" x-on:mouseleave="open1 = false"
+           :src="c.id_user.avatar_url" alt="" class="h-8 w-8 object-fill rounded-full">
+        
+  </div> 
   </div>
+    <div class="flex justify-center items-center space-x-2 ml-3 ">
+                <div class="bg-gray-100 w-full rounded-xl px-2 pb-2">
+                <div class="font-medium">
+                    <a href="#" class="hover:underline text-sm">
+                    <small>{{ c.id_user.full_name }}</small>
+                    </a>
+                </div>
+                <div class="text-xs">
+                    <p>{{ c.komentar }}</p>
+                </div>
+                </div>
+           
+              </div>
 </div>
+
 
                   
                  
                   </section>
                <form method="post" @submit.prevent="addKomentar(d)" v-if="user">
-                    <input type="text" v-model="komen" class="w-1/3 py-1.5 px-4 bg-gray-50 rounded-md">
-                    <button type="submit" class="mt-5 mx-2 py-1.5 px-2 bg-gray-800 text-white font-semibold text-center text-lg rounded-md hover:bg-gray-700"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                   
+        <div class="relative md:w-1/2 w-[80%] mt-5">
+            <input type="search" v-model="komen" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Coment here" required>
+            <button type="submit" class="absolute top-0 right-0 p-2 text-sm font-medium text-white bg-gray-900 rounded-r-lg border border-gray-700 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-gray-700 dark:focus:ring-gray-900"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-</svg>
-</button>
+</svg></button>
+        </div>
                   </form>
                 </div>
             </div>
@@ -86,12 +112,39 @@
              text-center text-lg" v-if="!loading">More More Fun </button></div>
             
         </div>
+        <div class="md:col-span-2 w-full md:h-screen  hidden md:block">
+          <div class="fixed pl-5 top-0   w-1/2 h-full bg-white border-l border-gray-200 dark:bg-gray-800 dark:border-gray-700 px-10">
+            <h3 class="text-2xl pb-5 font-bold text-gray-900 pt-16">New Users</h3>
+<ul class="max-w-sm divide-y divide-gray-200 dark:divide-gray-700" v-for="u in users" :key="u.id">
+  <li class="pb-3 sm:pb-4">
+     <div class="flex items-center space-x-4">
+        <div class="flex-shrink-0">
+           <img class="w-8 h-8 rounded-full" :src="u.avatar_url" alt="Neil image">
+        </div>
+        <div class="flex-1 min-w-0">
+           <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+              {{ u.full_name }}
+           </p>
+           <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+              {{ u.email }}
+           </p>
+        </div>
+     
+     </div>
+  </li>
+  
+  
+</ul>
+       <p>pram</p>
+        </div>
+        </div>
     </div>
+    
   </div>
 </template>
 
 <script setup>
-import {initModals} from 'flowbite'
+import {initModals,initDropdowns} from 'flowbite'
 const user = useSupabaseUser()
 const supabase = useSupabaseAuthClient()
 const count = ref(0)
@@ -100,10 +153,16 @@ const loading = ref(true)
 const coment = ref([])
 const komen = ref()
 const likes = ref([])
+const users = ref([])
 
 
-
-
+const getUsers = async ()=>{
+  const{data,error} = await supabase
+  .from("profiles")
+  .select()
+  .limit(5)
+  users.value = data
+}
 
 
 async function getMeme() {
@@ -139,7 +198,8 @@ async function loadmore(){
     loading.value = true
     let  limitStar = datas.value.length
     let  limitEnd  = limitStar+1
-     const {data,error} = await supabase.from("rawmeme").select()
+     const {data,error} = await supabase.from("rawmeme")
+        .select('id,created_at,deskripsi,foto,status,like_count,id_user(id,full_name,avatar_url)')
         .range(limitStar,limitEnd)
         .eq("status",true)
         .order("id",{ascending:false})
@@ -151,29 +211,38 @@ async function loadmore(){
        loading.value = false
 }
 
-async function getLIkes(d){
+async function getLIkes(){
   console.log(d.id)
   const {data,error} = await supabase
   .from('like')
-  .select()
-  .eq("post",d.id)
+  .select("post(id,deskripsi,foto,status),id_user(id,full_name,avatar_url)")
+  .eq("post",57)
   // .eq("post",d.id)
   likes.value = data
+
   console.log(data)
 }
 const addLike = async (d) =>{
-   const {data,error} = await supabase
+   const {error} = await supabase
   .from("like")
   .insert({
     post:d.id,
-    liked:true , 
-    liked_by:d.id_user.full_name,
+    id_user:d.id_user.id,
+
   })
-  getLIkes(d)
   if(error){
     console.log(error)
   }
-  
+
+  const {error:tbl2}  = await supabase
+  .from("rawmeme")
+  .update({
+    like_count:+1
+  })
+   .eq("id",d.id)
+   .subscribe()
+  getLIkes(d)
+ 
 }
 async function getKomentar(d){
 console.log(d.id)
@@ -212,10 +281,11 @@ onMounted(()=>{
     getMeme()
     getLIkes()
     // getKomentar()
+    initDropdowns()
+    initModals()
+    getUsers()
   
     
 })
-onBeforeMount((d)=>{
-  getLIkes(d)
-})
+
 </script>
