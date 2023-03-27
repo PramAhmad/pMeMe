@@ -41,10 +41,17 @@ const email = ref()
 const password = ref()
 const avatar = ref("https://wqogrgtqvjxkwlrdjpya.supabase.co/storage/v1/object/public/avatar/705891.png")
 const username = ref()
+const bio = ref("belum punya bio")
 
 async function SigninGithub(){
     const {error} = await supabase.auth.signInWithOAuth(
-        {provider: 'github'}
+        {provider: 'github',
+         options:{
+            data:{
+                bio:bio.value
+            }
+        }
+    }
     )
     
     if (error){
@@ -53,7 +60,13 @@ async function SigninGithub(){
 }
 async function SigninGoogle(){
     const{error} = await supabase.auth.signInWithOAuth(
-        {provider:'google'}
+        {provider:'google',
+         options:{
+            data:{
+                bio:bio.value
+            }
+        }
+    }
     )
     if(error){
         console.log(error)
@@ -67,7 +80,8 @@ async function signup(){
             data:{
                 full_name:username.value,
                 user_name:username.value,
-                avatar_url:avatar.value
+                avatar_url:avatar.value,
+                bio:bio.value
             }
         }
 

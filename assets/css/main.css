@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer utilities {
+ 
+  .text-gray-400 {
+    color: #9CA3AF;
+  }
+}
+
+/* Responsive design */
+@layer utilities {
+  @responsive {
+    .text-4xl {
+      @apply text-5xl;
+    }
+  }
+}

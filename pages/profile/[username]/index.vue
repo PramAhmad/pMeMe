@@ -1,25 +1,20 @@
 <template>
-  <div>
-    <div class="md:w-1/2 m-auto mt-10 h-full pb-10 pt-10 px-5 bg-gray-50 rounded-md shadow-md">
-      <div
-        class="w-full h-full rounded-full m-auto"
-        v-for="(dat, index) in datas"
-        :key="index"
-      >
-       <!-- <p>{{ getLengthMeme(dat.id) }}</p> -->
-       <p>{{ memeCount.length }}</p>
-       <p></p>
-        <img
-          :src="dat.avatar_url"
-          alt=""
-          srcset=""
-          class="w-44 h-44 rounded-full m-auto"
-        />
-        <h4 class="mt-5 text-gray-700 font-bold  text-center text-2xl uppercase">
-          {{ dat.full_name }}
-        </h4>
-      </div>
+  <div class="">
+   <div class="relative bg-gray-800 h-screen">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1595420832643-faf4aaf65c5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" alt="Background image" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+  </div>
+  <div class="relative flex flex-col items-center py-16 px-5" v-for="d in datas" :key="d.id">
+    <div class="rounded-full border-4 border-white overflow-hidden">
+      <img :src="d.avatar_url" alt="Profile picture" class="md:w-[400px] md:h-[400px] w-full  object-cover">
     </div>
+    <h1 class="mt-6 text-4xl font-bold text-white">{{ d.full_name }}</h1>
+    <p class="mt-2 text-lg text-gray-400" v-if="!d.bio">Bio tidak ada </p>
+    <p class="mt-2 text-lg text-gray-400">{{ d.bio }}</p>
+  
+  </div>
+</div>
   </div>
 </template>
 
@@ -35,7 +30,7 @@ const memeCount = ref({})
 const getUser = async () => {
   const { data } = await supabase
     .from('profiles')
-    .select()
+    .select("id,avatar_url,full_name,bio")
     .eq('full_name', route.params.username)
   datas.value = data
 }

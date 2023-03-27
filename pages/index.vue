@@ -63,12 +63,12 @@
 
                    
                   
+   
                   <section v-for="c in coment" :key="c.id" class="w-full bg-gray-100">
                 
            
+                    <p v-if="!c.id_post">Tidak ada komentar</p>
 <div class="bg-white dark:bg-gray-800 text-black dark:text-gray-200 p-2 antialiased flex "  v-if="d.id == c.id_post" >
-      <p v-if="coment.length < 1 ">Tidak ada komentar</p>
-
     <div class="flex items-center space-x-6 ">
         <div class="group relative flex flex-shrink-0 self-start cursor-pointer">
           <img 
@@ -80,9 +80,9 @@
     <div class="flex justify-center items-center space-x-2 ml-3 ">
                 <div class="bg-gray-100 w-full rounded-xl px-2 pb-2">
                 <div class="font-medium">
-                    <a href="#" class="hover:underline text-sm">
+                    <NuxtLink :to="`/profile/`+c.id_user.full_name" class="hover:underline text-sm">
                     <small>{{ c.id_user.full_name }}</small>
-                    </a>
+                    </NuxtLink>
                 </div>
                 <div class="text-xs">
                     <p>{{ c.komentar }}</p>
@@ -135,7 +135,7 @@
   
   
 </ul>
-       <p>pram</p>
+       
         </div>
         </div>
     </div>
@@ -220,7 +220,7 @@ async function getLIkes(){
   // .eq("post",d.id)
   likes.value = data
 
-  console.log(data)
+
 }
 const addLike = async (d) =>{
    const {error} = await supabase

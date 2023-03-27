@@ -1,9 +1,13 @@
 <template>
     <div>
-        <form  method="post" @submit.prevent="ChangePassword">
-            <input type="text" v-model="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-            <button type="submit" class="px-5 py-2 text-center font-semibold rounded-full bg-sky-500 hover:bg-sky-400 text-white mt-2 hover:transition duration-500 ">kirim email</button>
-        </form>
+       <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+  <h1 class="text-4xl font-bold text-gray-900 mb-6 text-center">Halaman ini sedang dalam pengembangan</h1>
+  <p class="text-xl text-gray-800 mb-12 text-center">Mohon maaf atas ketidaknyamanan ini. jika ingin mengganti password silahkan hubungi kami.</p>
+  <a href="https://wa.me/62859138483542" target="_blank" rel="noopener noreferrer" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg">
+    Hubungi Kami di WhatsApp
+  </a>
+</div>
+
     </div>
 </template>
 
