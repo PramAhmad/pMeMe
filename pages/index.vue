@@ -88,7 +88,6 @@
 </div>
 
 
-                  
                  
                   </section>
                <form method="post" @submit.prevent="addKomentar(d)" v-if="user">
@@ -150,6 +149,7 @@
 <script setup>
 import {initModals,initDropdowns,initDrawers} from 'flowbite'
 const user = useSupabaseUser()
+
 const supabase = useSupabaseAuthClient()
 const count = ref(0)
 const datas = ref([])
@@ -174,7 +174,7 @@ async function getMeme() {
   loading.value = true
   const { data, error } = await supabase
     .from("rawmeme")
-    .select('id,created_at,deskripsi,foto,status,like_count,id_user(id,full_name,avatar_url)')
+    .select('id,created_at,deskripsi,foto,status,,id_user(id,full_name,avatar_url)')
     .range(0,0)
     .eq("status", true)
     .order("id", { ascending: false })
@@ -205,7 +205,7 @@ async function loadmore(){
     let  limitStar = datas.value.length
     let  limitEnd  = limitStar+1
      const {data,error} = await supabase.from("rawmeme")
-        .select('id,created_at,deskripsi,foto,status,like_count,id_user(id,full_name,avatar_url)')
+        .select('id,created_at,deskripsi,foto,status,,id_user(id,full_name,avatar_url)')
         .range(limitStar,limitEnd)
         .eq("status",true)
         .order("id",{ascending:false})
@@ -228,28 +228,28 @@ async function getLIkes(){
 
 
 }
-const addLike = async (d) =>{
-   const {error} = await supabase
-  .from("like")
-  .insert({
-    post:d.id,
-    id_user:d.id_user.id,
+// const addLike = async (d) =>{
+//    const {error} = await supabase
+//   .from("like")
+//   .insert({
+//     post:d.id,
+//     id_user:d.id_user.id,
 
-  })
-  if(error){
-    console.log(error)
-  }
+//   })
+//   if(error){
+//     console.log(error)
+//   }
 
-  const {error:tbl2}  = await supabase
-  .from("rawmeme")
-  .update({
-    like_count:+1
-  })
-   .eq("id",d.id)
-   .subscribe()
-  getLIkes(d)
+//   const {error:tbl2}  = await supabase
+//   .from("rawmeme")
+//   .update({
+//     :+1
+//   })
+//    .eq("id",d.id)
+//    .subscribe()
+//   getLIkes(d)
  
-}
+// }
 async function getKomentar(d){
 console.log(d.id)
   loading.value = true

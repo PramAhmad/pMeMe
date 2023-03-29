@@ -73,7 +73,7 @@ route.params.id;
 async function getSelectedPost(){
     loading.value = true
     const {data,error} = await supabase.from("rawmeme")
-    .select("created_at,deskripsi,foto,status,id_user(id,full_name,avatar_url)")
+    .select("id,created_at,deskripsi,foto,status,id_user(id,full_name,avatar_url)")
     .eq("id_user(id)",user.value.id)
     .eq("status",true)
     .order("created_at",{ascending:true})
@@ -88,7 +88,7 @@ async function getSelectedPost(){
 async function UnapprovedPost(){
     loading.value = true
     const {data,error} = await supabase.from("rawmeme")
-    .select("created_at,deskripsi,foto,status,id_user(id,full_name,avatar_url)")
+    .select("id,created_at,deskripsi,foto,status,id_user(id,full_name,avatar_url)")
     .eq("id_user(id)",user.value.id)
     .eq("status",false)
     unapp.value = data
