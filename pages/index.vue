@@ -130,7 +130,7 @@
               {{ u.full_name }}
            </p>
            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-              {{ u.email }}
+              {{ u.bio }}
            </p>
         </div>
      
