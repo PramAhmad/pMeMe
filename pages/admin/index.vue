@@ -4,7 +4,7 @@
             <div class="md:col-span-2 w-full h-full">
                 <AdminNav/>
             </div>
-            <div class="md:col-span-6 w-full  h-wull px-x pt-16 pb-10 ">
+            <div class="md:col-span-6 w-full  h-full px-x pt-16 pb-10 ">
                 
                 <div class="flex flex-col lg:flex-row w-full lg:space-x-6 space-y-2 lg:space-y-0 mb-2 lg:mb-4">
                           <div class="w-full lg:w-1/3 ">
@@ -20,6 +20,9 @@
                         <div class="flex flex-col justify-center">
                             <div class="text-lg font-semibold text-gray-800">{{users.length}}</div>
                             <div class="text-sm text-gray-400">Total Users</div>
+                            <div class="mt-1">
+                                <NuxtLink to="/admin/user" class="py-0.5 px-2 bg-green-400 rounded-full hover:bg-green-500 text-white font-semibold mt-1">Lihat</NuxtLink>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,6 +40,9 @@
                         <div class="flex flex-col justify-center">
                             <div class="text-lg font-semibold text-gray-800">{{memes.length}}</div>
                             <div class="text-sm text-gray-400">Total Meme Posted</div>
+                              <div class="mt-1">
+                                <NuxtLink to="/admin/meme" class="py-0.5 px-2 bg-sky-400 rounded-full hover:bg-sky-500 text-white font-semibold mt-1">Lihat</NuxtLink>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,10 +60,14 @@
                         <div class="flex flex-col justify-center">
                             <div class="text-lg font-semibold text-gray-800">{{unpost.length}}</div>
                             <div class="text-sm text-gray-400">Total Unposted Meme</div>
+                               <div class="mt-1">
+                                <NuxtLink to="/admin/meme/accept" class="py-0.5 px-2 bg-rose-400 rounded-full hover:bg-rose-500 text-white font-semibold mt-1">Lihat</NuxtLink>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+                   
                 </div>
 
             </div>
