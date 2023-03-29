@@ -126,9 +126,9 @@
            <img class="w-8 h-8 rounded-full" :src="u.avatar_url" alt="Neil image">
         </div>
         <div class="flex-1 min-w-0">
-           <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+           <NuxtLink :to="`/profile/`+u.full_name" class="text-sm font-medium text-gray-900 truncate dark:text-white">
               {{ u.full_name }}
-           </p>
+           </NuxtLink>
            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
               {{ u.bio }}
            </p>
