@@ -9,7 +9,8 @@
             v-model="deskripsi"
             class="py-2 px-3 bg-gray-50 border border-gray-300 rounded-md mt-2 w-full"
             ></textarea>
-        <button type="submit" class="mt-3 py-1.5 px-6 bg-gray-800 text-white font-semibold text-center text-lg rounded-md hover:bg-gray-700">tambah</button>
+        <button type="submit" class="mt-3 mr-3 py-1.5 px-6 bg-gray-800 text-white font-semibold text-center text-lg rounded-md hover:bg-gray-700">tambah</button>
+        <NuxtLink to="/" class="mt-3 py-2 px-6 bg-sky-500 text-white font-semibold text-center text-lg rounded-md hover:bg-sky-400">Kembali</NuxtLink>
         </form>
         </div>
     </div>
