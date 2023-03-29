@@ -34,8 +34,7 @@ async function tambahMeme(){
         id_user:user.value.id,
         status:status.value
     })
-    deskripsi.value = ""
-    fotopath.value = ""
+    navigateTo("/post/delay")
   loading.value = false
     if(error){
         console.log(error)

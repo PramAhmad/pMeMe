@@ -16,8 +16,9 @@
                   <button @click="login" class="py-1.5 w-full bg-sky-500 text-white font-semibold text-center text-md hover:bg-sky-600 hover:transition duration-500 rounded-md my-2">Masuk</button>
                   
             </form>
-            <div class="flex items-end justify-end my-5">
-                <NuxtLink to="/register" class="ml-auto text-sm decoration-transparent text-blue-700 hover:underline dark:text-blue-500 ">Register Here</NuxtLink>
+            <div class="flex justify-between my-5">
+                <NuxtLink to="/password/forget" class="mx-auto text-sm decoration-transparent text-blue-700 hover:underline dark:text-blue-500 ">Forgot Password?</NuxtLink>
+                <NuxtLink to="/register" class="mx-auto text-sm decoration-transparent text-blue-700 hover:underline dark:text-blue-500 ">Register Here</NuxtLink>
             </div>
             
             <hr class="mt-1">

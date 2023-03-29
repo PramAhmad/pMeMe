@@ -57,18 +57,24 @@
     </div>
 </div>
     </div>
-    <form  method="post" @submit.prevent="changeData">
+    <form  method="post" @submit.prevent="changeData" >
     <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="name">
           Nama
         </label>
-        <input class="bg-gray-50 px-3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" id="name" type="text" placeholder="Masukkan nama Anda" required v-model="name">
+        <input
+         
+         class="bg-gray-50 px-3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" id="name" type="text" v-model="props" placeholder="Masukkan nama Anda" required 
+      
+        >
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="bio">
           Bio
         </label>
-        <textarea class="bg-gray-50 px-3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" id="bio" placeholder="Tulis bio Anda di sini" required v-model="bio"></textarea>
+        <textarea class="bg-gray-50 px-3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" id="bio"  placeholder="Tulis bio Anda di sini" required 
+      
+        v-model="bios"></textarea>
       </div>
       <div class="flex justify-end">
         <button type="submit" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded mr-2">
@@ -78,6 +84,7 @@
           Kembali
         </NuxtLink>
     </div>
+  
         </form>
   </div>
  
@@ -89,28 +96,33 @@
 <script setup>
 import { initModals } from 'flowbite'
 const user = useSupabaseUser()
+const props = ref(user.value.user_metadata.full_name)
+const bios = ref(user.value.user_metadata.bio)
 const supabase = useSupabaseAuthClient()
 const token = useSupabaseToken()
-console.log(token)
 const datas = ref()
 const url = ref("https://wqogrgtqvjxkwlrdjpya.supabase.co/storage/v1/object/public/avatar/")
 const avapath = ref() 
 const name = ref()
-const bio = ref()
+
+
 const router = useRouter()
-// console.log(user)
 
 
 
-async function getName(){
-    const {data,error} = await supabase.auth.getUser()
 
-    console.log(data)
-    datas.value = data
 
-}
+// async function getName(){
+//     const {data,error} = await
+//     supabase
+//     .from("profiles")
+//     .select()
+//     .eq("id",user.value.id)
+//     bios.value = data
+
+// }
 async function updateName(){
-    console.log(name.value)
+  
     const {error:tbl2} = await supabase.auth.updateUser({
         data:{
             avatar_url: url.value + avapath.value
@@ -132,10 +144,11 @@ async function updateName(){
   
 }
 const changeData = async ()=>{
-    const {error} = await supabase.auth.updateUser({
+  
+    const {error:tbl2} = await supabase.auth.updateUser({
         data:{
-            full_name:name.value,
-            user_name:name.value,
+            full_name:props.value,
+            user_name:props.value,
            
         }
     })
@@ -144,18 +157,18 @@ const changeData = async ()=>{
     .update({
         
         id:user.value.id,
-        full_name : name.value,
-         bio:bio.value
+        full_name : props.value,
+        bio:bios.value
     })
     .eq('id',user.value.id)
     if(tbl1 || tbl2){
         console.error(tbl1 || tbl2)
     }
-    router.psuh("/peofile")
+    // router.push("/peofile")
     
 }
 onMounted(()=>{
-    getName()
+    // getName()
     initModals()
 })
 </script>
