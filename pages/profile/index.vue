@@ -26,6 +26,7 @@
       <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded">
         Edit Foto
       </button>
+       
       <div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
     <div class="relative w-full h-full max-w-2xl md:h-auto">
     
@@ -40,8 +41,8 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
-          
             <div class="p-6 space-y-6">
+
                
                <form  method="post" @submit.prevent="updateName">
                  <label for="" class="block  mt-4 text-sm font-medium text-gray-900 dark:text-white">New Avtar</label>
@@ -96,6 +97,7 @@ const url = ref("https://wqogrgtqvjxkwlrdjpya.supabase.co/storage/v1/object/publ
 const avapath = ref() 
 const name = ref()
 const bio = ref()
+const router = useRouter()
 // console.log(user)
 
 
@@ -149,7 +151,7 @@ const changeData = async ()=>{
     if(tbl1 || tbl2){
         console.error(tbl1 || tbl2)
     }
-    navigateTo("/profile")
+    router.psuh("/peofile")
     
 }
 onMounted(()=>{

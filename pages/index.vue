@@ -108,8 +108,17 @@
                 </div>
             </div>
             
-            <div class="m-auto text-center mt-5" v-if="!datas.length < count " ><button @click="loadmore" class=" m-auto py-2 px-5 rounded-full bg-gray-900 text-gray-100 font-semi
-             text-center text-lg" v-if="!loading">More More Fun </button></div>
+            <div class="m-auto text-center mt-5" v-if="!datas.length < count && !load" ><button @click="loadmore" class=" m-auto py-2 px-5 rounded-full bg-gray-900 text-gray-100 font-semi
+             text-center text-lg" >
+             More More Fun
+              </button></div>
+            <div class="m-auto text-center mt-5" v-if="!datas.length < count && load" ><button @click="loadmore" class=" m-auto py-2 px-5 rounded-full bg-gray-900 text-gray-100 font-semi
+             text-center text-lg" >
+             waiting fun
+              </button></div>
+      
+
+        
             
         </div>
         <div class="md:col-span-2 w-full md:h-screen  hidden md:block">
@@ -150,6 +159,7 @@ const supabase = useSupabaseAuthClient()
 const count = ref(0)
 const datas = ref([])
 const loading = ref(true)
+const load = ref(true)
 const coment = ref([])
 const komen = ref()
 const likes = ref([])
@@ -187,6 +197,7 @@ async function getMeme() {
   }
 
   loading.value = false
+  load.value = false
 
   if (error) {
     console.log(error)
@@ -195,7 +206,7 @@ async function getMeme() {
 
 
 async function loadmore(){
-    loading.value = true
+    load.value = true
     let  limitStar = datas.value.length
     let  limitEnd  = limitStar+1
      const {data,error} = await supabase.from("rawmeme")
@@ -208,7 +219,7 @@ async function loadmore(){
           datas.value.push(data[i]);
         }
       }
-       loading.value = false
+       load.value = false
 }
 
 async function getLIkes(){
