@@ -16,6 +16,9 @@
 </template>
 
 <script setup>
+definePageMeta({
+    middleware: 'auth'
+})
 const supabase = useSupabaseAuthClient()
 const user = useSupabaseUser()
 const url =ref("https://wqogrgtqvjxkwlrdjpya.supabase.co/storage/v1/object/public/foto/")

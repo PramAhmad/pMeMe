@@ -51,6 +51,9 @@
 </template>
 
 <script setup>
+definePageMeta({
+    middleware: 'auth'
+})
 const supabase = useSupabaseAuthClient()
 const user = useSupabaseUser()
 const datas = ref([])

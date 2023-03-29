@@ -17,7 +17,7 @@
                   
             </form>
             <div class="flex justify-between my-5">
-                <NuxtLink to="/password/forget" class="mx-auto text-sm decoration-transparent text-blue-700 hover:underline dark:text-blue-500 ">Forgot Password?</NuxtLink>
+                <NuxtLink to="/password" class="mx-auto text-sm decoration-transparent text-blue-700 hover:underline dark:text-blue-500 ">Forgot Password?</NuxtLink>
                 <NuxtLink to="/register" class="mx-auto text-sm decoration-transparent text-blue-700 hover:underline dark:text-blue-500 ">Register Here</NuxtLink>
             </div>
             

@@ -94,6 +94,9 @@
 </template>
 
 <script setup>
+definePageMeta({
+    middleware: 'auth'
+})
 import { initModals } from 'flowbite'
 const user = useSupabaseUser()
 const props = ref(user.value.user_metadata.full_name)
@@ -149,6 +152,7 @@ const changeData = async ()=>{
         data:{
             full_name:props.value,
             user_name:props.value,
+            bio:bios.value
            
         }
     })
@@ -164,7 +168,7 @@ const changeData = async ()=>{
     if(tbl1 || tbl2){
         console.error(tbl1 || tbl2)
     }
-    // router.push("/peofile")
+    alert("sukses")
     
 }
 onMounted(()=>{

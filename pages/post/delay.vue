@@ -54,6 +54,9 @@
 </template>
 
 <script setup>
+definePageMeta({
+    middleware: 'auth'
+})
 const user = useSupabaseUser()
 const supa = useSupabaseAuthClient()
 const meme = ref([])

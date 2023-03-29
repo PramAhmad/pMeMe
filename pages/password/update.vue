@@ -1,24 +1,28 @@
 <template>
     <div>
       
-      <div class="md:col-span-2 w-full md:h-screen hidden md:block relative">
-  <div class="absolute inset-0 bg-gray-900 opacity-50"></div>
-  <div class="absolute inset-y-0 right-0 w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/3 p-8 bg-white shadow-lg flex flex-col justify-center items-center">
-    <h2 class="text-2xl font-bold text-gray-800 mb-8">Peraturan</h2>
-    <ul class="list-disc text-gray-800 text-lg mb-8">
-      <li>Tidak boleh melakukan tindakan toxic.</li>
-      <li>Tidak boleh membahas konten 18+.</li>
-      <li>Tidak boleh melakukan spam.</li>
-      <li>Dilarang melakukan tindakan yang merugikan pengguna lain.</li>
-    </ul>
-    <button class="bg-blue-500 text-white rounded-full py-2 px-8 hover:bg-blue-600 transition-colors duration-300 ease-in-out">Saya Setuju</button>
-  </div>
-</div>
+       <div class="p-3 flex items-center justify-center w-full h-screen align-middle">
+            <div class="items-center align-middle w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <div class="py-4 mb-2">
+               <h5 class="text-xl font-medium text-gray-900 dark:text-white mb-3">Change Your Password</h5>
+        <form @submit.prevent="updatePassword"  class="space-y-4">
+            <input type="text" name="" id="" v-model="password" 
+            placeholder="new password"
+             class="bg-gray-50 px-3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+            required>
+            <button class="py-1.5 px-5 bg-sky-500 rounded-md text-white hover:bg-sky-400 font-semibold">udpate</button>
+        </form>
+            </div>
+            </div>
+        </div>
 
     </div>
 </template>
 
 <script setup>
+definePageMeta({
+    middleware: 'auth'
+})
 const user = useSupabaseAuthClient()
 const password = ref()
 
@@ -32,6 +36,7 @@ async function updatePassword(){
     if(data){
         console.log("suskes")
     }
+    alert("sukses ganti password")
 }
 </script>
 
