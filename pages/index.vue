@@ -174,7 +174,7 @@ async function getMeme() {
   loading.value = true
   const { data, error } = await supabase
     .from("rawmeme")
-    .select('id,created_at,deskripsi,foto,status,,id_user(id,full_name,avatar_url)')
+    .select('id,created_at,deskripsi,foto,status,id_user(id,full_name,avatar_url)')
     .range(0,0)
     .eq("status", true)
     .order("id", { ascending: false })
@@ -205,7 +205,7 @@ async function loadmore(){
     let  limitStar = datas.value.length
     let  limitEnd  = limitStar+1
      const {data,error} = await supabase.from("rawmeme")
-        .select('id,created_at,deskripsi,foto,status,,id_user(id,full_name,avatar_url)')
+        .select(`id,created_at,deskripsi,foto,status,id_user(id,full_name,avatar_url)`)
         .range(limitStar,limitEnd)
         .eq("status",true)
         .order("id",{ascending:false})
@@ -217,17 +217,17 @@ async function loadmore(){
        load.value = false
 }
 
-async function getLIkes(){
-  console.log(d.id)
-  const {data,error} = await supabase
-  .from('like')
-  .select("post(id,deskripsi,foto,status),id_user(id,full_name,avatar_url)")
-  .eq("post",57)
-  // .eq("post",d.id)
-  likes.value = data
+// async function getLIkes(){
+//   console.log(d.id)
+//   const {data,error} = await supabase
+//   .from('like')
+//   .select("post(id,deskripsi,foto,status),id_user(id,full_name,avatar_url)")
+//   .eq("post",57)
+//   // .eq("post",d.id)
+//   likes.value = data
 
 
-}
+// }
 // const addLike = async (d) =>{
 //    const {error} = await supabase
 //   .from("like")
@@ -285,7 +285,7 @@ async function addKomentar(d){
 
 onMounted(()=>{
     getMeme()
-    getLIkes()
+    // getLIkes()
     // getKomentar()
     initDropdowns()
     initModals()
