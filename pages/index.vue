@@ -50,17 +50,12 @@
                      </svg>
                 </button>
       
-                 <a :href="`https://www.facebook.com/share.php?&src=bm&v=4&u=`+d.foto" class="py-2 px-3 bg-gray-800 rounded-md inline-block align-middle"  >
+                 <a :href="`https://twitter.com/intent/tweet?&related=onecak&original_referer=`+d.foto" class="py-2 px-3 bg-gray-800 rounded-md inline-block align-middle"  >
                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-white">
   <path fill-rule="evenodd" d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z" clip-rule="evenodd" />
 </svg>
 
                 </a>
-                
-          
-              
-
-
                    
                   
    
@@ -153,7 +148,7 @@
 </template>
 
 <script setup>
-import {initModals,initDropdowns} from 'flowbite'
+import {initModals,initDropdowns,initDrawers} from 'flowbite'
 const user = useSupabaseUser()
 const supabase = useSupabaseAuthClient()
 const count = ref(0)
@@ -295,6 +290,7 @@ onMounted(()=>{
     initDropdowns()
     initModals()
     getUsers()
+    initDrawers()
   
     
 })
