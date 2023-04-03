@@ -165,8 +165,10 @@ const getUsers = async ()=>{
   const{data,error} = await supabase
   .from("profiles")
   .select()
-  .limit(5)
+  .limit(9)
+  .order("updated_at",{ascending:true})
   users.value = data
+
 }
 
 
@@ -251,7 +253,7 @@ async function loadmore(){
  
 // }
 async function getKomentar(d){
-console.log(d.id)
+
   loading.value = true
   const {data,error} = await supabase.from("coment")
   .select("id,created_at,id_post,komentar,id_user(id,full_name,avatar_url)")

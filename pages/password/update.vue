@@ -20,9 +20,7 @@
 </template>
 
 <script setup>
-definePageMeta({
-    middleware: 'auth'
-})
+
 const user = useSupabaseAuthClient()
 const password = ref()
 

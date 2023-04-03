@@ -17,7 +17,7 @@
                   
             </form>
             <div class="flex justify-between my-5">
-                <NuxtLink to="/password" class="mx-auto text-sm decoration-transparent text-blue-700 hover:underline dark:text-blue-500 ">Forgot Password?</NuxtLink>
+                <NuxtLink to="/password/forget" class="mx-auto text-sm decoration-transparent text-blue-700 hover:underline dark:text-blue-500 ">Forgot Password?</NuxtLink>
                 <NuxtLink to="/register" class="mx-auto text-sm decoration-transparent text-blue-700 hover:underline dark:text-blue-500 ">Register Here</NuxtLink>
             </div>
             
@@ -39,6 +39,8 @@ definePageMeta({
 const supabase = useSupabaseAuthClient()
 const email = ref()
 const password = ref()
+const act = ref("login")
+const supa = useSupabaseUser()
 
 async function SigninGithub(){
     const {error} = await supabase.auth.signInWithOAuth(
@@ -58,9 +60,9 @@ async function login(){
         email : email.value,
         password: password.value,
     })
-    navigateTo("/")
 
     if(error){
+        console.log(error)
         alert("sandi/email salah")
         navigateTo("/login")
     }

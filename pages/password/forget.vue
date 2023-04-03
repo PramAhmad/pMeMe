@@ -18,14 +18,13 @@
 </template>
 
 <script setup>
+import { getMaxListeners } from 'process';
+
 const supabase = useSupabaseAuthClient()
 const email = ref()
 const signwithEmail = async () =>{
-    const {data,error} = await supabase.auth.resetPasswordForEmail(email,{
-        email:email.value,       
-        option :{
-            emailRedirectTo: 'https://p-meme.vercel.app/password/update',
-        }
+    const {data,error} = await supabase.auth.resetPasswordForEmail(email.value,{
+        redirectTo:"https://p-meme.vercel.app/password/update"
     })
     if(error){
         console.log(error)
