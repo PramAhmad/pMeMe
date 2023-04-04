@@ -79,6 +79,7 @@ async function signup(){
         options:{
             data:{
                 full_name:username.value,
+                email:email.value,
                 user_name:username.value,
                 avatar_url:avatar.value,
                 bio:bio.value

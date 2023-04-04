@@ -1,5 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+   backgroundColor: {
+    
+      'gray': '#999999',
+      'white': '#FFFFFF',
+      'black': '#000000',
+    
+    },
   content: [
     "./components/**/*.{js,vue,ts}",
     "./layouts/**/*.vue",
@@ -14,6 +21,6 @@ module.exports = {
     extend: {},
   },
   plugins: [
-     require('flowbite/plugin')
+      require('flowbite')
   ],
 }

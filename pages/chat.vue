@@ -58,8 +58,8 @@
     </div>
   </div>
 </template>
-
 <script setup>
+import {initDrawers} from 'flowbite'
 const user = useSupabaseUser()
 const supabase = useSupabaseAuthClient()
 const messages = ref([])
@@ -130,7 +130,7 @@ if (!('on' in supabase.from('chat'))) {
 
 
 onMounted(() => {
-
+  initDrawers()
 })
 
 
