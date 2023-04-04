@@ -30,7 +30,7 @@
 </div>
 
           </div>
-              <form @submit.prevent="sendMessage">
+              <form @submit.prevent="sendMessage" >
                 <div class=" absolute bottom-2 md:w-2/3 w-[95%]" >
                    <div class="relative  md:w-[85%] w-[95%] mt-5">
             <input type="search" v-model="pesan" id="search-dropdown" class="block p-3.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-full  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Coment here" required>

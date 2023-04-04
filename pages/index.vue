@@ -50,17 +50,12 @@
                      </svg>
                 </button>
       
-                 <a :href="`https://www.facebook.com/share.php?&src=bm&v=4&u=`+d.foto" class="py-2 px-3 bg-gray-800 rounded-md inline-block align-middle"  >
+                 <a :href="`https://twitter.com/intent/tweet?&related=onecak&original_referer=`+d.foto" class="py-2 px-3 bg-gray-800 rounded-md inline-block align-middle"  >
                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-white">
   <path fill-rule="evenodd" d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z" clip-rule="evenodd" />
 </svg>
 
                 </a>
-                
-          
-              
-
-
                    
                   
    
@@ -93,7 +88,6 @@
 </div>
 
 
-                  
                  
                   </section>
                <form method="post" @submit.prevent="addKomentar(d)" v-if="user">
@@ -108,8 +102,17 @@
                 </div>
             </div>
             
-            <div class="m-auto text-center mt-5" v-if="!datas.length < count " ><button @click="loadmore" class=" m-auto py-2 px-5 rounded-full bg-gray-900 text-gray-100 font-semi
-             text-center text-lg" v-if="!loading">More More Fun </button></div>
+            <div class="m-auto text-center mt-5" v-if="!datas.length < count && !load" ><button @click="loadmore" class=" m-auto py-2 px-5 rounded-full bg-gray-900 text-gray-100 font-semi
+             text-center text-lg" >
+             More More Fun
+              </button></div>
+            <div class="m-auto text-center mt-5" v-if="!datas.length < count && load" ><button @click="loadmore" class=" m-auto py-2 px-5 rounded-full bg-gray-900 text-gray-100 font-semi
+             text-center text-lg" >
+             waiting fun
+              </button></div>
+      
+
+        
             
         </div>
         <div class="md:col-span-2 w-full md:h-screen  hidden md:block">
@@ -122,11 +125,11 @@
            <img class="w-8 h-8 rounded-full" :src="u.avatar_url" alt="Neil image">
         </div>
         <div class="flex-1 min-w-0">
-           <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+           <NuxtLink :to="`/profile/`+u.full_name" class="text-sm font-medium text-gray-900 truncate dark:text-white">
               {{ u.full_name }}
-           </p>
+           </NuxtLink>
            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-              {{ u.email }}
+              {{ u.bio }}
            </p>
         </div>
      
@@ -144,12 +147,14 @@
 </template>
 
 <script setup>
-import {initModals,initDropdowns} from 'flowbite'
+import {initModals,initDropdowns,initDrawers} from 'flowbite'
 const user = useSupabaseUser()
+
 const supabase = useSupabaseAuthClient()
 const count = ref(0)
 const datas = ref([])
 const loading = ref(true)
+const load = ref(true)
 const coment = ref([])
 const komen = ref()
 const likes = ref([])
@@ -160,8 +165,10 @@ const getUsers = async ()=>{
   const{data,error} = await supabase
   .from("profiles")
   .select()
-  .limit(5)
+  .limit(9)
+  .order("updated_at",{ascending:true})
   users.value = data
+
 }
 
 
@@ -169,7 +176,7 @@ async function getMeme() {
   loading.value = true
   const { data, error } = await supabase
     .from("rawmeme")
-    .select('id,created_at,deskripsi,foto,status,like_count,id_user(id,full_name,avatar_url)')
+    .select('id,created_at,deskripsi,foto,status,id_user(id,full_name,avatar_url)')
     .range(0,0)
     .eq("status", true)
     .order("id", { ascending: false })
@@ -187,6 +194,7 @@ async function getMeme() {
   }
 
   loading.value = false
+  load.value = false
 
   if (error) {
     console.log(error)
@@ -195,11 +203,11 @@ async function getMeme() {
 
 
 async function loadmore(){
-    loading.value = true
+    load.value = true
     let  limitStar = datas.value.length
     let  limitEnd  = limitStar+1
      const {data,error} = await supabase.from("rawmeme")
-        .select('id,created_at,deskripsi,foto,status,like_count,id_user(id,full_name,avatar_url)')
+        .select(`id,created_at,deskripsi,foto,status,id_user(id,full_name,avatar_url)`)
         .range(limitStar,limitEnd)
         .eq("status",true)
         .order("id",{ascending:false})
@@ -208,44 +216,44 @@ async function loadmore(){
           datas.value.push(data[i]);
         }
       }
-       loading.value = false
+       load.value = false
 }
 
-async function getLIkes(){
-  console.log(d.id)
-  const {data,error} = await supabase
-  .from('like')
-  .select("post(id,deskripsi,foto,status),id_user(id,full_name,avatar_url)")
-  .eq("post",57)
-  // .eq("post",d.id)
-  likes.value = data
+// async function getLIkes(){
+//   console.log(d.id)
+//   const {data,error} = await supabase
+//   .from('like')
+//   .select("post(id,deskripsi,foto,status),id_user(id,full_name,avatar_url)")
+//   .eq("post",57)
+//   // .eq("post",d.id)
+//   likes.value = data
 
 
-}
-const addLike = async (d) =>{
-   const {error} = await supabase
-  .from("like")
-  .insert({
-    post:d.id,
-    id_user:d.id_user.id,
+// }
+// const addLike = async (d) =>{
+//    const {error} = await supabase
+//   .from("like")
+//   .insert({
+//     post:d.id,
+//     id_user:d.id_user.id,
 
-  })
-  if(error){
-    console.log(error)
-  }
+//   })
+//   if(error){
+//     console.log(error)
+//   }
 
-  const {error:tbl2}  = await supabase
-  .from("rawmeme")
-  .update({
-    like_count:+1
-  })
-   .eq("id",d.id)
-   .subscribe()
-  getLIkes(d)
+//   const {error:tbl2}  = await supabase
+//   .from("rawmeme")
+//   .update({
+//     :+1
+//   })
+//    .eq("id",d.id)
+//    .subscribe()
+//   getLIkes(d)
  
-}
+// }
 async function getKomentar(d){
-console.log(d.id)
+
   loading.value = true
   const {data,error} = await supabase.from("coment")
   .select("id,created_at,id_post,komentar,id_user(id,full_name,avatar_url)")
@@ -279,11 +287,12 @@ async function addKomentar(d){
 
 onMounted(()=>{
     getMeme()
-    getLIkes()
+    // getLIkes()
     // getKomentar()
     initDropdowns()
     initModals()
     getUsers()
+    initDrawers()
   
     
 })
