@@ -1,5 +1,5 @@
 <template>
-    <div class="p-3 flex items-center justify-center w-full h-screen align-middle ">
+    <div class="p-3 flex items-center justify-center w-full h-screen align-middle dark:bg-gray-700 ">
         <div class=" items-center align-middle w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <div class="py-4 mb-2">
                <h5 class="text-xl font-medium text-gray-900 dark:text-white">SignUp to Pmeme</h5>
@@ -21,9 +21,13 @@
             </form>
             <hr class="mt-4">
             <h4 class="text-center text-md text-gray-400 font-semibold mt-2 mb-2">or</h4>
-            <div class="flex items-center justify-center gap-6">
-                <button @click="SigninGithub()" class="   text-white font-semibold text-center text-md rounded-md hover:bg-gray-700"><font-awesome-icon icon="fa-brands fa-square-github" class="w-10 h-10 text-5xl text-gray-800 bg-white" /></button>
-                <button @click="SigninGoogle()" class="  text-white font-semibold text-center text-md rounded-md hover:bg-gray-700"><font-awesome-icon icon="fa-brands fa-square-google-plus" class="w-10 h-10 text-5xl text-red-600 bg-white" /></button>
+            <div class="flex items-center justify-center dark:bg-gray-800 gap-6">
+                <button @click="SigninGithub()"
+                    class=" font-semibold text-center text-md rounded-md hover:bg-gray-700 "><font-awesome-icon
+                        icon="fa-brands fa-square-github" class=" bg text-5xl dark:text-white text-gray-800 " /></button>
+                <button @click="SigninGoogle()"
+                    class="  text-white font-semibold text-center text-md rounded-md hover:bg-gray-700"><font-awesome-icon
+                        icon="fa-brands fa-square-google-plus" class="w-10 h-10 text-5xl text-red-600 bg-white dark:bg-gray-800" /></button>
             </div>
         </div>
     </div>

@@ -13,16 +13,17 @@
 
             </div>
    
-    <div class="md:grid md:grid-cols-10 w-full h-full">
+    <div class="md:grid md:grid-cols-10 w-full h-full ">
       
         <div class="col-span-2 w-full h-full ">
             <Navbar/>
         </div>
-        <div class="md:col-span-6 w-full h-full md:px-10 px-4 pt-16 pb-10  m-auto " >
+        <div class="md:col-span-8 w-full h-full md:px-10 px-4 pt-16 pb-10  m-auto dark:bg-gray-700" >
             <div class=" bg-sky-500 hover:g-sky-600 text-center font-semibold text-white mt-7 w-44 h-5 rounded-md flex items-center justify-center"><NuxtLink to="/post/delay">butuh persetujuan: {{ unapp.length }}</NuxtLink></div>
         
-          <div class="" v-if="datas.length <= 0"> 
-            <p>data tidak ada</p>
+            <div class="h-[80vh] w-full flex items-center justify-center" v-if="datas.length <= 0" >
+              <h4 class="text-gray-600 text-center font-semibold dark:text-gray-100">Belum Pernah Post, </h4>
+              <NuxtLink to="/post/tambah" class="text-blue-500 dark:text-blue-400 font-semibold">  Mulai Post Disini</NuxtLink>
           </div>
             <div class="w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 items-center " v-for="d in datas" :key="d.id">
                 <div class="w-full h-full bg-gray-50 flex  border-b border-gray-300" v-if="user">

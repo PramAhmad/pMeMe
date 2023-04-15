@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div class="flex items-center justify-center w-full bg-gray-100 bg-opacity-75  h-screen" v-if="loading">
+    <div class="flex items-center justify-center w-full bg-gray-100 bg-opacity-75  h-screen dark:bg-gray-700" v-if="loading">
 
       <div role="status">
         <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
@@ -17,7 +17,7 @@
       </div>
 
     </div>
-    <div class="md:grid md:grid-cols-10 w-full h-full">
+    <div class="md:grid md:grid-cols-10 w-full h-full bg-gray-50 dark:bg-gray-700">
 
       <div class="md:col-span-2 w-full h-full ">
         <Navbar />
@@ -25,22 +25,22 @@
       <div class="md:col-span-6 w-full h-full  px-4 pt-16  pb-10 place-items-center  ">
 
 
-        <div class="md:w-[80%] w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 place-self-center m-auto  " v-for="d in datas"
+        <div class="md:w-[80%] w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 place-self-center m-auto  bg-gray-50 dark:bg-gray-800" v-for="d in datas"
           :key="d.id">
 
 
-          <div class="w-full h-full bg-gray-50 flex border-b border-gray-300">
+          <div class="w-full h-full bg-gray-100 dark:bg-gray-800 flex border-b border-gray-300">
             <div class="rounded-full ml-6 my-3">
               <img :src="d.id_user.avatar_url" alt="img avatar"
                 class="w-10 h-10 p-0.5 rounded-full ring-2 ring-gray-300 dark:ring-gray-500">
             </div>
-            <NuxtLink :to="`/profile/` + d.id_user.full_name" class="py-5 font-semibold  text-md text-gray-800 px-3">{{
+            <NuxtLink :to="`/profile/` + d.id_user.full_name" class="py-5 font-semibold  text-md text-gray-800 dark:text-gray-100 px-3">{{
               d.id_user.full_name }}</NuxtLink>
           </div>
           <img :src="d.foto" alt="" class="w-full h-full  pb-3">
 
-          <p class="text-sm text-gray-800 px-3">Dibuat {{ d.created_at }}</p>
-          <h5 class="px-3 text-md font-semibold mb-2">{{ d.deskripsi }}</h5>
+          <p class="text-sm text-gray-800 px-3 dark:text-gray-100">Dibuat {{ d.created_at }}</p>
+          <h5 class="px-3 text-md font-semibold mb-2 text-gray-800 dark:text-gray-100">{{ d.deskripsi }}</h5>
           <div class="px-3 ">
             <!-- <section  class="w-2/3 bg-gray-100" v-for="l in likes " :key="l.id">
                     <div class="rounded-md bg-gray-700 w-[90%] px-3"  v-if="l.post == d.id"  >
@@ -53,17 +53,16 @@
                          </svg>
                      </button> -->
 
-            <button @click="getKomentar(d)" class="py-2 mr-3 px-3 bg-gray-800 rounded-md inline-block align-middle"><svg
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-4 h-4 text-white font-bold">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-              </svg>
+            <button @click="getKomentar(d)" class="py-1.5 mr-3 px-2 bg-gray-800 dark:bg-transparent dark:border dark:border-white rounded-md inline-block align-middle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-white s">
+  <path fill-rule="evenodd" d="M12 2.25c-2.429 0-4.817.178-7.152.521C2.87 3.061 1.5 4.795 1.5 6.741v6.018c0 1.946 1.37 3.68 3.348 3.97.877.129 1.761.234 2.652.316V21a.75.75 0 001.28.53l4.184-4.183a.39.39 0 01.266-.112c2.006-.05 3.982-.22 5.922-.506 1.978-.29 3.348-2.023 3.348-3.97V6.741c0-1.947-1.37-3.68-3.348-3.97A49.145 49.145 0 0012 2.25zM8.25 8.625a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zm2.625 1.125a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zm4.875-1.125a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25z" clip-rule="evenodd" />
+</svg>
+
             </button>
 
             <a :href="`https://twitter.com/intent/tweet?&related=onecak&original_referer=` + d.foto"
-              class="py-2 px-3 bg-gray-800 rounded-md inline-block align-middle">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-white">
+              class="py-1.5 px-2 bg-gray-800 rounded-md inline-block align-middle  dark:bg-transparent dark:border dark:border-white">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-white">
                 <path fill-rule="evenodd"
                   d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
                   clip-rule="evenodd" />
@@ -76,7 +75,7 @@
             <section v-for="c in coment" :key="c.id" class="w-full bg-gray-100">
 
 
-              <p v-if="!c.id_post">Tidak ada komentar</p>
+              <p v-if="!coment.length">Tidak ada komentar</p>
               <div class="bg-white dark:bg-gray-800 text-black dark:text-gray-200 p-2 antialiased flex "
                 v-if="d.id == c.id_post">
                 <div class="flex items-center space-x-6 ">
@@ -87,7 +86,7 @@
                   </div>
                 </div>
                 <div class="flex justify-center items-center space-x-2 ml-3 ">
-                  <div class="bg-gray-100 w-full rounded-xl px-2 pb-2">
+                  <div class="bg-gray-100 w-full dark:bg-gray-700 rounded-xl px-2 pb-2">
                     <div class="font-medium">
                       <NuxtLink :to="`/profile/` + c.id_user.full_name" class="hover:underline text-sm">
                         <small>{{ c.id_user.full_name }}</small>
@@ -111,7 +110,7 @@
                   class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                   placeholder="Coment here" required>
                 <button type="submit"
-                  class="absolute top-0 right-0 p-2 text-sm font-medium text-white bg-gray-900 rounded-r-lg border border-gray-700 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-gray-700 dark:focus:ring-gray-900"><svg
+                  class="absolute top-0 right-0 p-2 text-sm font-medium text-white bg-gray-900 rounded-r-lg border border-gray-700 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-gray-900"><svg
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -123,11 +122,11 @@
         </div>
 
         <div class="m-auto text-center mt-5" v-if="!datas.length < count && !load"><button @click="loadmore" class=" m-auto py-2 px-5 rounded-full bg-gray-900 text-gray-100 font-semi
-                             text-center text-lg">
+                             text-center text-lg dark:text-gray-100 dark:bg-blue-500 dark:hover:bg-blue-400">
             More More Fun
           </button></div>
         <div class="m-auto text-center mt-5" v-if="!datas.length < count && load"><button @click="loadmore" class=" m-auto py-2 px-5 rounded-full bg-gray-900 text-gray-100 font-semi
-                             text-center text-lg">
+                             text-center text-lg dark:text-gray-100 dark:bg-blue-500 dark:hover:bg-blue-400">
             waiting fun
           </button></div>
 
@@ -138,7 +137,7 @@
       <div class="md:col-span-2 w-full md:h-screen  hidden md:block">
         <div
           class="fixed pl-5 top-0   w-1/2 h-full bg-white border-l border-gray-200 dark:bg-gray-800 dark:border-gray-700 px-10">
-          <h3 class="text-2xl pb-5 font-bold text-gray-900 pt-16">New Users</h3>
+          <h3 class="text-2xl pb-5 font-bold text-gray-900 pt-16 dark:text-white">New Users</h3>
           <ul class="max-w-sm divide-y divide-gray-200 dark:divide-gray-700" v-for="u in users" :key="u.id">
             <li class="pb-3 sm:pb-4">
               <div class="flex items-center space-x-4">

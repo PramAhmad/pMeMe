@@ -19,11 +19,11 @@
         <div class="col-span-2 w-full h-full ">
             <Navbar/>
         </div>
-        <div class="md:col-span-6 w-full h-full md:px-10 px-4 pt-16 pb-10  m-auto " >
+        <div class="md:col-span-8 w-full h-full md:px-10 px-4 pt-16 pb-10  m-auto dark:bg-gray-700 " >
  
           
-          <div class="h-[80vh] w-full flex items-center justify-center" v-if="meme.length <= 0" >
-              <h4 class="text-gray-600 text-center font-semibold ">Belum Pernah Post, </h4>
+          <div class="h-[100vh] w-full flex items-center justify-center" v-if="meme.length <= 0" >
+              <h4 class="text-gray-600 text-center font-semibold dark:text-gray-100">Belum Pernah Post, </h4>
               <NuxtLink to="/post/tambah" class="text-blue-500 font-semibold">  Mulai Post Disini</NuxtLink>
           </div>
             <div class="w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 items-center " v-for="d in meme" :key="d.id">

@@ -1,7 +1,7 @@
 <template>
-    <div class="p-3 flex items-center justify-center w-full h-screen align-middle ">
+    <div class="p-3 flex items-center justify-center w-full h-screen align-middle bg-gray-700">
         <div class="items-center align-middle w-full max-w-xl p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <h5 class="text-center font-bold text-gray-900 text-2xl my-2 mb-3">Post Meme</h5>
+            <h5 class="text-center font-bold text-gray-900 text-2xl my-2 mb-3 dark:text-gray-300">Post Meme</h5>
             <form  method="post" @submit.prevent="tambahMeme">
             <Foto v-model:path="fotopath" />
             <label for="deskripsi" class="block  mt-4 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
@@ -9,8 +9,8 @@
             v-model="deskripsi"
             class="py-2 px-3 bg-gray-50 border border-gray-300 rounded-md mt-2 w-full"
             ></textarea>
-        <button type="submit" class="mt-3 mr-3 py-1.5 px-6 bg-gray-800 text-white font-semibold text-center text-lg rounded-md hover:bg-gray-700">tambah</button>
-        <NuxtLink to="/" class="mt-3 py-2 px-6 bg-sky-500 text-white font-semibold text-center text-lg rounded-md hover:bg-sky-400">Kembali</NuxtLink>
+        <button type="submit" class="mt-3 mr-3 py-1.5 px-6 bg-gray-800 text-white font-semibold text-center text-lg rounded-md hover:bg-gray-700 dark:bg-sky-500 hover:bg-sky-400">tambah</button>
+        <NuxtLink to="/" class="mt-3 py-2 px-6 bg-rose-500 text-white font-semibold text-center text-lg rounded-md hover:bg-rose-400">Kembali</NuxtLink>
         </form>
         </div>
     </div>

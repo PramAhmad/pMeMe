@@ -17,13 +17,13 @@
                   </button>
                   <NuxtLink to="/" class="flex items-center pl-2 ">
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                        class="w-10 h-10 rotate-12 text-gray-900">
+                        class="w-10 h-10 rotate-12 text-gray-900 dark:text-gray-100">
                         <path fill-rule="evenodd"
                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
                            clip-rule="evenodd" />
                      </svg>
 
-                     <h3 class="  text-2xl mr-3  font-bold" alt="Flowbite Logo">P</h3>
+                     <h3 class="  text-2xl mr-3  font-bold dark:text-gray-100" alt="Flowbite Logo">P</h3>
                      <span
                         class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white md:inline hidden">meme</span>
                   </NuxtLink>
@@ -110,7 +110,7 @@
       <aside id="logo-sidebar"
          class="fixed top-0 left-0 z-40 md:w-[20%] w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
          aria-label="Sidebar">
-         <div class="h-full px-3 py-4 overflow-y-auto bg-white border-r border-gray-200 ">
+         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 ">
             <a href="https://flowbite.com/" class="flex items-center pl-2.5 mb-5">
                <h3 class="h-10  text-2xl  sm:h-7 font-bold" alt="Flowbite Logo">P</h3>
 
