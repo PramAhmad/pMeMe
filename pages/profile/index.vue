@@ -21,7 +21,7 @@
       <div class="border rounded-lg shadow-lg p-6">
         <div class="flex justify-center items-center mb-4">
           <div class="rounded-full border-4 border-white overflow-hidden mr-4">
-            <img :src="user.user_metadata.avatar_url" alt="Profile picture" class="w-[300px] h-[300px] object-cover">
+            <img :src="user.user_metadata.avatar_url" alt="Profile picture" class="md:w-[300px] md:h-[300px] w-[150px] h-[150px] object-cover">
           </div>
           <button data-modal-target="defaultModal" data-modal-toggle="defaultModal"
             class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded">
@@ -36,7 +36,7 @@
 
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                   <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    CHange Your Name
+                    Change Your Name
                   </h3>
                   <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
