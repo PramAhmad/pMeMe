@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="dark:bg-gray-600">
   
     <!-- <div v-for="message in messages" :key="message.id">
       <span>{{ message.id_user.full_name }}:</span>
@@ -9,13 +9,13 @@
       <input type="text" v-model="pesan">
       <button type="submit">Send</button>
     </form> -->
-    <div class="md:grid md:grid-cols-10 w-full h-full dark:bg-gray-600">
-      <div class="md:col-span-2 w-full h-full ">
-            <Navbar/>
-        </div>
-        <div class="md:col-span-6 w-full max-h-[90vh] overflow-y-auto  px-4 pt-16  pb-10 place-items-center bg-gray-700 "  >
-          <div class="h-[80%]">
-       <div class="flex space-x-2  my-4 transition duration-700" v-for="msg in messages" :key="msg.id">
+    <div class="flex flex-col md:flex-row h-screen">
+  <div class="md:w-1/5 h-full bg-gray-800">
+    <Navbar/>
+  </div>
+  <div class="md:w-4/5 h-full bg-gray-100 flex flex-col dark:bg-gray-700">
+    <div class="flex-1 overflow-y-auto py-4 px-4 md:py-8 md:px-12">
+      <div class="flex space-x-2  my-4 transition duration-700" v-for="msg in messages" :key="msg.id">
   <img class="h-10 w-10 rounded-full" :src="msg.id_user.avatar_url">
   <div class="flex-1 " >
     <div class="max-w-prose inline-block bg-gray-50 p-2 rounded-xl mt-3 dark:bg-gray-600">
@@ -27,35 +27,18 @@
       <p class="text-sm text-gray-700 dark:text-gray-50">{{ msg.pesan }}</p>
     </div>
   </div>
-</div>
-
-<form @submit.prevent="sendMessage" class="" >
-  <div class=" absolute bottom-2 md:w-2/3 w-[95%] " >
-     <div class="relative  md:w-[85%] w-[95%] mt-5 ">
-<input type="search" v-model="pesan" id="search-dropdown" class="block p-3.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-full  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Coment here" required>
-<button type="submit" class="absolute top-0 right-0 p-3 text-sm font-medium text-white bg-gray-900 rounded-r-full border border-gray-700 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-gray-700 dark:focus:ring-gray-900"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-<path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-</svg></button>
-</div>
   </div>
-</form>
-          </div>
-        </div>
-       <div class="md:col-span-2 w-full md:h-screen hidden md:block relative dark:bg-gray-800">
-  <div class="absolute inset-0 bg-gray-900 opacity-50"></div>
-  <div class="absolute inset-y-0 right-0 w-full p-8 bg-white dark:bg-gray-800 shadow-lg flex flex-col justify-center items-center">
-    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-8">Peraturan</h2>
-    <ul class="list-disc text-gray-800 text-lg dark:text-gray-100 mb-8">
-      <li>Tidak boleh melakukan tindakan toxic.</li>
-      <li>Tidak boleh membahas konten 18+.</li>
-      <li>Tidak boleh melakukan spam.</li>
-      <li>Dilarang melakukan tindakan yang merugikan pengguna lain.</li>
-    </ul>
- 
-  </div>
-</div>
-
     </div>
+    <div class="h-16 md:h-24 bg-gray-200 dark:bg-gray-800 px-4 md:px-12 py-2 md:py-4">
+      <form class="flex items-center h-full" @submit.prevent="sendMessage">
+        <input type="text" placeholder="Type a message" class="w-full px-4 py-2 mr-2 rounded-full border-gray-300 focus:outline-none focus:ring focus:ring-blue-200" v-model="pesan">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 text-white rounded-full">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
   </div>
 </template>
 <script setup>
