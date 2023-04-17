@@ -107,7 +107,7 @@
 
               <div class="relative md:w-1/2 w-[80%] mt-5">
                 <input type="search" v-model="komen" id="search-dropdown"
-                  class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                  class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-100 rounded-lg  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                   placeholder="Coment here" required>
                 <button type="submit"
                   class="absolute top-0 right-0 p-2 text-sm font-medium text-white bg-gray-900 rounded-r-lg border border-gray-700 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-500 dark:focus:ring-gray-900"><svg

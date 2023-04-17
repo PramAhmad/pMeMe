@@ -110,7 +110,7 @@
       <aside id="logo-sidebar"
          class="fixed top-0 left-0 z-40 md:w-[20%] w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
          aria-label="Sidebar">
-         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 ">
+         <div class="h-full px-3 py-4 overflow-y-auto bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-600 ">
             <a href="https://flowbite.com/" class="flex items-center pl-2.5 mb-5">
                <h3 class="h-10  text-2xl  sm:h-7 font-bold" alt="Flowbite Logo">P</h3>
 
