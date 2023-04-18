@@ -33,7 +33,7 @@
             <h4 class="text-center text-md text-gray-400 font-semibold mt-2 mb-2">or</h4>
             <div class="flex items-center justify-center dark:bg-gray-800 gap-6">
                 <button @click="SigninGithub()"
-                    class=" font-semibold text-center text-md rounded-md hover:bg-gray-700 "><font-awesome-icon
+                    class=" font-semibold text-center text-md rounded-md  "><font-awesome-icon
                         icon="fa-brands fa-square-github" class=" bg text-5xl dark:text-white text-gray-800 " /></button>
                 <button @click="SigninGoole()"
                     class="  text-white font-semibold text-center text-md rounded-md hover:bg-gray-700"><font-awesome-icon
