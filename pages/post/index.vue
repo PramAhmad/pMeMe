@@ -31,11 +31,11 @@
               <NuxtLink to="/post/tambah" class="text-blue-500 dark:text-blue-400 font-semibold">  Mulai Post Disini</NuxtLink>
           </div>
             <div class="w-full mt-5 shadow-md pb-5 md:mb-16 mb-10 items-center " v-for="d in datas" :key="d.id">
-                <div class="w-full h-full bg-gray-50 flex  border-b border-gray-300" v-if="user">
+                <div class="w-full h-full bg-gray-50 flex  border-b border-gray-300 dark:bg-gray-800" v-if="user">
                     <div class="rounded-full ml-6 my-3">
                         <img :src="d.id_user.avatar_url" alt="img avatar" class="w-10 h-10 p-0.5 rounded-full ring-2 ring-gray-300 dark:ring-gray-500">
                     </div>
-                    <h3 class="py-5 font-semibold  text-md text-gray-800 px-3">{{ d.id_user.full_name }}</h3>
+                    <h3 class="py-5 font-semibold  text-md text-gray-800 px-3 dark:text-gray-100">{{ d.id_user.full_name }}</h3>
                     <button @click="deletepost(d)" class="py-0.5 h-10 ml-auto mr-4 mt-3  px-2 rounded-md bg-red-600 hover:bg-red-500"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-white">
     <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
     </svg>
@@ -43,8 +43,8 @@
                 </div>
                 <img :src="d.foto" alt="" class="w-full h-full  pb-3">
                 
-                <p class="text-sm text-gray-800 px-3">Dibuat {{ d.created_at }}</p>
-                <h5 class="px-3 text-md font-semibold mb-2">{{ d.deskripsi }}</h5>
+                <p class="text-sm text-gray-800 px-3 dark:text-gray-100">Dibuat {{ d.created_at }}</p>
+                <h5 class="px-3 text-md font-semibold mb-2 dark:text-gray-100">{{ d.deskripsi }}</h5>
               
             </div>
             
