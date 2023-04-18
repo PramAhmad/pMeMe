@@ -12,7 +12,7 @@
           <img :src="d.avatar_url" alt="Profile picture"
             class="md:w-[400px] md:h-[400px]  w-[150px] h-[150px]  object-cover">
         </div>
-        <h1 class="mt-6 text-4xl font-bold text-white">{{ d.full_name }}</h1>
+        <h1 class="mt-6 text-4xl font-bold text-white text-center">{{ d.full_name }}</h1>
         <p class="mt-2 text-lg text-gray-400" v-if="!d.bio">Bio tidak ada </p>
         <p class="mt-2 text-lg text-gray-400">{{ d.bio }}</p>
 
