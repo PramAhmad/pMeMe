@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="p-3 flex items-center justify-center w-full h-screen align-middle">
+        <div class="p-3 flex items-center justify-center w-full h-screen align-middle dark:bg-gray-700">
             <div class="items-center align-middle w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
                     <div class="py-4 mb-2">
                <h5 class="text-xl font-medium text-gray-900 dark:text-white mb-3">Send email for change password</h5>
