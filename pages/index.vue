@@ -29,7 +29,7 @@
           :key="d.id">
 
 
-          <div class="w-full h-full bg-gray-100 dark:bg-gray-800 flex border-b border-gray-300">
+          <div class="w-full h-full bg-white dark:bg-gray-800 flex border-b border-gray-300">
             <div class="rounded-full ml-6 my-3">
               <img :src="d.id_user.avatar_url" alt="img avatar"
                 class="w-10 h-10 p-0.5 rounded-full ring-2 ring-gray-300 dark:ring-gray-500">
@@ -76,7 +76,7 @@
 
 
               <p v-if="!coment.length">Tidak ada komentar</p>
-              <div class="bg-white dark:bg-gray-800 text-black dark:text-gray-200 p-2 antialiased flex "
+              <div class="bg-gray-50 dark:bg-gray-800 text-black dark:text-gray-200 p-2 antialiased flex "
                 v-if="d.id == c.id_post">
                 <div class="flex items-center space-x-6 ">
                   <div class="group relative flex flex-shrink-0 self-start cursor-pointer">

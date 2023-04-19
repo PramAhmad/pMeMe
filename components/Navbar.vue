@@ -84,13 +84,13 @@
                            <li>
                               <div class="relative inline-block px-4">
                                  <select v-model="$colorMode.preference"
-                                    class="block appearance-none w-36 h-10 font-semibold rounded-md bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white border border-gray-400 dark:border-gray-700 py-2 pr-2 focus:outline-none focus:border-blue-500">
+                                    class="block appearance-none w-36 h-10 font-semibold rounded-md bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white border border-gray-400 dark:border-gray-600 py-2 pr-2 px-2 focus:outline-none focus:border-blue-500">
                                     <option class="bg-gray-100 dark:bg-gray-800" value="system">System</option>
                                     <option class="bg-gray-100 dark:bg-gray-800" value="light">Light</option>
                                     <option class="bg-gray-100 dark:bg-gray-800" value="dark">Dark</option>
                                  </select>
                                  <div
-                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-5 text-gray-700">
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-5 text-gray-700 dark:text-white">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                        viewBox="0 0 20 20">
                                        <path d="M14.5 7.5L10 12l-4.5-4.5L4 9l6 6 6-6z" />
@@ -234,7 +234,7 @@
                      <span class="flex-1 ml-3 whitespace-nowrap">Logout</span>
                   </button>
                </li>
-
+            
 
             </ul>
 
